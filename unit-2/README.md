@@ -187,5 +187,5 @@ console.log(ex4Maybe("12"))
 ```
 
 ### 思维导图
-![t1mPKK.md.png](https://s1.ax1x.com/2020/05/31/t1mPKK.md.png)
-![t1m9v6.md.png](https://s1.ax1x.com/2020/05/31/t1m9v6.md.png)
+![functor.md.png](./notes/functor.png)
+![Javascriptp.md.png](./notes/Javascriptp.png)
