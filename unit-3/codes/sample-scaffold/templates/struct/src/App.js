@@ -2,18 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-<% if(typescript) { %>
-interface HeaderProps {
+<% if(typescript) { %>interface HeaderProps {
   logo: string
 }
 <% } %>
-
-<% if(typescript) { %>
-function Header(props: HeaderProps) {
-<% } else { %>
-function Header(props) {
-<% } %>
-
+<% if(typescript) { %>function Header(props: HeaderProps) {<% } else { %>function Header(props) {<% } %>
   return (
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
