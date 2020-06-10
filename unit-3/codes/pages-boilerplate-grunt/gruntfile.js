@@ -6,8 +6,16 @@ module.exports = function () {
   require('load-grunt-tasks')(grunt)
 
   grunt.initConfig({
-    lint: {
+    stylelint: {
+      options: {
+        configFile: '.stylelintrc.json',
+        failOnError: true,
+        syntax: 'scss',
+      },
       src: ['src/**/*.scss'],
+    },
+    eslint: {
+      src: ['src/**/*.js'],
     },
   })
 
@@ -16,19 +24,9 @@ module.exports = function () {
     del.sync('dist')
   })
 
-  grunt.registerMultiTask('lint', function () {
+  grunt.registerTask('lint', function () {
     const done = this.async()
-    styleLint
-      .lint({
-        files: this.filesSrc,
-        syntax: 'scss',
-        configFile: require.resolve('./.stylelintrc.json'),
-      })
-      .then((res) => {
-        console.log('res', res)
-        done()
-      })
-      .catch(done)
+    parallel(['stylelint', 'eslint']).then(() => done())
   })
 
   grunt.registerTask('serve', function () {
@@ -43,4 +41,23 @@ module.exports = function () {
   grunt.registerTask('deploy', function () {
     console.log('clean')
   })
+}
+
+function spawnify(task) {
+  return new Promise((resolve, reject) => {
+    grunt.util.spawn(
+      {
+        grunt: true,
+        args: task,
+      },
+      (err, result) => {
+        grunt.log.writeln('\n' + result.stdout)
+        resolve()
+      },
+    )
+  })
+}
+
+function parallel(tasks) {
+  return Promise.all(tasks.map(spawnify))
 }
