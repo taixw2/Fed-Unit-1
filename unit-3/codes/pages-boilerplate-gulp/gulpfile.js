@@ -2,6 +2,8 @@
 const gulp = require('gulp')
 const gulpClean = require('gulp-clean')
 const { program } = require('commander')
+const stylelint = require('gulp-stylelint')
+const eslint = require('gulp-eslint')
 
 program
   .option('--port', 'Specify service port')
@@ -10,14 +12,28 @@ program
   .option('--prod', 'Production mode alias', 2080)
 
 function clean() {
+  return gulp.src(['temp', 'dist'], { allowEmpty: true }).pipe(gulpClean())
+}
+
+function csslint() {
+  // return gulp.src(['src/**/*.scss']).pipe(
+  //   stylelint({
+  //     syntax: 'scss',
+  //     reporters: [{ formatter: 'string', console: true }],
+  //   })
+  // )
+}
+
+function javascriptlint() {
   return gulp
-    .src(['temp', 'dist'], { allowEmpty: true })
-    .pipe(gulpClean())
+    .src(['src/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.formatEach('compact', process.stderr))
 }
 
 module.exports = {
   clean,
-  lint() {},
+  lint: gulp.parallel([javascriptlint]),
   complie() {},
   serve() {},
   build() {},
