@@ -50,11 +50,11 @@
 
 ### 2. 使用 Gulp 完成项目的自动化构建
 
-[pages-boilerplate-gulp](../fed-e-code/part-02/module-02/pages-boilerplate-gulp)
+[pages-boilerplate-gulp](https://github.com/taixw2/fed-e-code/tree/98fe636c1a65d381eab0b684743a238704f458d0/part-02/module-02/pages-boilerplate-gulp)
 
 ### 3. 使用 Grunt 完成项目的自动化构建
 
-[pages-boilerplate-grunt](../fed-e-code/part-02/module-02/pages-boilerplate-grunt)
+[pages-boilerplate-grunt](https://github.com/taixw2/fed-e-code/tree/98fe636c1a65d381eab0b684743a238704f458d0/part-02/module-02/pages-boilerplate-grunt)
 
 ### 4. 视频地址
 
