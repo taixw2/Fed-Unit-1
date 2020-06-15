@@ -38,7 +38,7 @@
 
 ### 2. 你认为脚手架除了创建目录结构,还有什么更深层次的意义?
 
-有两个核心目的: 增加开发效率, 以及减少人为因素所带来的错误
+统一项目目录结构、基本编程范式，增加开发效率，以及减少人为因素所带来的错误
 
 ## 编程题
 
@@ -46,6 +46,21 @@
 
 通过读取用户的输入配置(配置文件或者命令行配置), 搭配相应的模板文件, 最后输出相应的目录结构
 
+[sample-scaffold](./codes/sample-scaffold)
+
 ### 2. 使用 Gulp 完成项目的自动化构建
 
+[pages-boilerplate-gulp](../fed-e-code/part-02/module-02/pages-boilerplate-gulp)
+
 ### 3. 使用 Grunt 完成项目的自动化构建
+
+[pages-boilerplate-grunt](../fed-e-code/part-02/module-02/pages-boilerplate-grunt)
+
+### 4. 视频地址
+
+1. [gulp](https://dx-docs.oss-cn-shenzhen.aliyuncs.com/gulp-720p.mp4)
+2. [grunt](https://dx-docs.oss-cn-shenzhen.aliyuncs.com/grunt-720p.mp4)
+
+<video src="https://dx-docs.oss-cn-shenzhen.aliyuncs.com/gulp-720p.mp4" width="571" controls="controls" />
+
+<video src="https://dx-docs.oss-cn-shenzhen.aliyuncs.com/grunt-720p.mp4" width="571" controls="controls" />
