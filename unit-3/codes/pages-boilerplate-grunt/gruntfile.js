@@ -6,12 +6,7 @@ const ghpages = require('gh-pages')
 // hack useref 引入了 grunt-css
 const loadNpmTasks = grunt.loadNpmTasks
 grunt.loadNpmTasks = function () {
-  const args = [].slice.call(arguments)
-  const task = args[0] || ''
-  if (typeof task !== 'string') {
-    loadNpmTasks.apply(grunt, args)
-    return
-  }
+  const task = arguments[0] || ''
   if (task.indexOf('grunt-css') === -1) {
     loadNpmTasks.apply(grunt, args)
     return

@@ -6,7 +6,7 @@
 
 **创建阶段**
 
-当项目多时, 不统一的项目结构会增加不少的学习成本, 以及一定程度上会混乱开发者的思维, 特别是需要切换多个项目同时开发时, 通过脚手架, 能够在创建阶段统一代码分割, 甚至提示出不合规范的地方以及提出改进意见, 以及能够提供子命令用于创建统一的对象创建
+当项目多时, 不统一的项目结构会增加不少的学习成本, 以及一定程度上会混乱开发者的思维。 通过脚手架, 能够在创建阶段统一代码风格, 甚至提示出不合规范的地方以及提出改进意见, 以及能够提供子命令用于创建统一的对象创建
 
 在创建阶段工程化所体现的价值是提供统一的范式
 
@@ -38,7 +38,7 @@
 
 ### 2. 你认为脚手架除了创建目录结构,还有什么更深层次的意义?
 
-有两个核心目的: 增加开发效率, 以及减少人为因素所带来的错误
+统一项目目录结构、基本编程范式，增加开发效率，以及减少人为因素所带来的错误
 
 ## 编程题
 
@@ -46,6 +46,21 @@
 
 通过读取用户的输入配置(配置文件或者命令行配置), 搭配相应的模板文件, 最后输出相应的目录结构
 
+[sample-scaffold](./codes/sample-scaffold)
+
 ### 2. 使用 Gulp 完成项目的自动化构建
 
+[pages-boilerplate-gulp](https://github.com/taixw2/fed-e-code/tree/98fe636c1a65d381eab0b684743a238704f458d0/part-02/module-02/pages-boilerplate-gulp)
+
 ### 3. 使用 Grunt 完成项目的自动化构建
+
+[pages-boilerplate-grunt](https://github.com/taixw2/fed-e-code/tree/98fe636c1a65d381eab0b684743a238704f458d0/part-02/module-02/pages-boilerplate-grunt)
+
+### 4. 视频地址
+
+1. [gulp](https://dx-docs.oss-cn-shenzhen.aliyuncs.com/gulp-720p.mp4)
+2. [grunt](https://dx-docs.oss-cn-shenzhen.aliyuncs.com/grunt-720p.mp4)
+
+<video src="https://dx-docs.oss-cn-shenzhen.aliyuncs.com/gulp-720p.mp4" width="571" controls="controls" />
+
+<video src="https://dx-docs.oss-cn-shenzhen.aliyuncs.com/grunt-720p.mp4" width="571" controls="controls" />
