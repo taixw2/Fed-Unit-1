@@ -1,11 +1,19 @@
 import Vue from './vue'
 
 const vm = new Vue({
-    data() {
-        return {
-            msg: "123"
-        }
+  data() {
+    return {
+      msg: '123',
+      num: 0,
+    }
+  },
+  el: '#root',
+
+  methods: {
+    increment() {
+      this.num++
     },
-    el: '#root'
+  },
 })
-window.vm = vm
+
+// window.vm = vm

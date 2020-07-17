@@ -3,17 +3,20 @@ import Compiler from './compiler'
 
 interface Option {
   data: () => { [key: string]: any }
+  methods: { [key: string]: any }
   el: string | HTMLElement
 }
 
 export default class Vue {
   $options: { [key: string]: any }
   $data: { [key: string]: any }
+  $methods: { [key: string]: any }
   $el: HTMLElement
 
   constructor(option: Option) {
     this.$options = option
     this.$data = option.data() || {}
+    this.$methods = option.methods || {}
     this.$el =
       typeof option.el === 'string'
         ? document.querySelector(option.el)
@@ -21,9 +24,10 @@ export default class Vue {
 
     // proxyData
     this._proxyData(this.$data)
+    // 
+    this._mountMethod(this.$methods)
     // observer
-    new Observer(this)
-
+    new Observer(this.$data)
     // compiler
     new Compiler(this)
   }
@@ -42,6 +46,12 @@ export default class Vue {
           return Reflect.set(data, key, newValue)
         },
       })
+    })
+  }
+
+  _mountMethod(methods) {
+    Reflect.ownKeys(methods).forEach((key) => {
+      Reflect.set(this, key, methods[key].bind(this))
     })
   }
 }

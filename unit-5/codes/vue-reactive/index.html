@@ -11,7 +11,9 @@
     <div id="root">
         {{ msg }}
         <span v-text="msg"></span>
+        <span v-text="num"></span>
         <input v-model="msg" />
+        <button v-on:click="increment">点击自增</button>
     </div>
 
     <script src="./src/index.ts"></script>

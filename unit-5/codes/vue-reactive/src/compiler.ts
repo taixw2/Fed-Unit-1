@@ -2,16 +2,19 @@
 
 import Vue from './vue'
 import Watcher from './Watcher'
+import Directive from './directive'
 
 const regexp = /\{\{(.+?)\}\}/
 
 export default class Compiler {
   $el: HTMLElement
   $vm: Vue
+  $directive: Directive
 
   constructor(vm) {
     this.$el = vm.$el
     this.$vm = vm
+    this.$directive = new Directive(vm)
     this.compiler(this.$el)
   }
 
@@ -28,33 +31,10 @@ export default class Compiler {
   }
 
   compilerElementNode(node: HTMLElement) {
-    node.getAttributeNames().forEach((name) => {
-      if (this.isDirective(name)) {
-        const key = name.substr(2)
-        const value = node.getAttribute(name)
-        this[key + 'Updater'](node, Reflect.get(this.$vm, value), value)
-        new Watcher(this.$vm, value, (newValue: string) => {
-          this[key + 'Updater'](node, newValue, value)
-        })
-      }
+    node.getAttributeNames().forEach((attrName) => {
+      this.$directive.udpater(node, attrName, node.getAttribute(attrName))
     })
     this.compiler(node)
-  }
-
-  textUpdater(node: HTMLElement, value: string) {
-    const curValue = node.textContent
-    if (curValue === value) return
-    node.textContent = value
-  }
-
-  modelUpdater(node: HTMLInputElement, value: string, key: string) {
-    const curValue = node.value
-    if (curValue === value) return
-    node.value = value
-
-    node.addEventListener('input', () => {
-      this.$vm[key] = node.value
-    })
   }
 
   compilerTextNode(node: ChildNode) {
@@ -66,10 +46,6 @@ export default class Compiler {
         node.textContent = newValue
       })
     }
-  }
-
-  isDirective(attr: string) {
-    return attr.startsWith('v-')
   }
 
   isTextNode(node: ChildNode): node is HTMLElement {
