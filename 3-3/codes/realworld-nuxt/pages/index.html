@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    Vue.createApp({
+      setup() {
+        const Active = { info: Vue.reactive({ formdata: {} }) }
+
+        Vue.onBeforeMount(() => {
+          return Promise.resolve().then(() => {
+            const resData = { start_time: Date.now() / 1000 }
+            Active.info.formdata = resData
+
+            Active.info.formdata.date = new Date(Active.info.formdata.start_time * 1000).toLocaleDateString()
+            Active.info.formdata.start_time = '2223'
+          })
+        })
+
+        return {
+          Active: Active,
+        }
+      },
+
+      render() {
+        return Vue.h('div', {}, [
+          Vue.h("button", { onClick: () => this.Active.info.formdata.date = "modify" }, "按钮"),
+          Vue.h("div", {}, this.Active.info.formdata.date),
+        ])
+      }
+    }).mount('#app');
+  </script>
+
+</body>
+
+</html>
