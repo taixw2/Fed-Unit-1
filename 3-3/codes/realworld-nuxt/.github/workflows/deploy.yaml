@@ -1,0 +1,27 @@
+name: Deploy To Vercel
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs: 
+
+  deploy: 
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout 🤞
+        uses: actions/checkout@v2
+        
+      - name: Setup node 🤟
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 12.x
+      
+      - name: Build Project 👌
+        run: npm install && npm run build
+
+      - name: Deploy 🤏
+        run: npx vercel --token=${{ secrets.ACCESS_TOKEN }} --confirm  --prod
